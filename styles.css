@@ -15,19 +15,59 @@ body {
 }
 
 .container {
-  border: 1px solid red;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  gap: 3rem;
   padding: 1.5rem;
   width: 80%;
 }
 
 .card {
   border: 1px solid red;
-  flex: 1;
+  flex: 0 0 15rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: lightcoral;
+  color: white;
+}
+
+dialog {
+  align-self: center;
+  justify-self: center;
+  padding: 3rem;
+}
+
+::backdrop {
+  background-color: black;
+  opacity: 0.5;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+input, select {
+  padding: 0.5rem 1rem;
 }

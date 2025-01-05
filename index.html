@@ -12,5 +12,31 @@
   <div class="container">
     
   </div>
+  <dialog>
+    <form>
+      <legend>Enter info about book</legend>
+      <div class="input-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title">
+      </div>
+      <div class="input-group">
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author">
+      </div>
+      <div class="input-group">
+        <label for="pages">Pages:</label>
+        <input type="number" id="pages" name="pages">
+      </div>
+      <div class="input-group">
+        <label for="read">Read or not</label>
+        <select name="read" id="read">
+          <option value="read">Read</option>
+          <option value="">Not read</option>
+        </select>
+      </div>
+      <button class="dialog-close" type="submit">Submit</button>
+    </form>
+  </dialog>
+  <button class="dialog-open">Add book</button>
 </body>
 </html>

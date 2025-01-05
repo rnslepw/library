@@ -12,8 +12,17 @@ const books = [
     pages: 949,
     read: false,
     id: 1
+  },
+  {
+    title: 'Silmarillion',
+    author: 'Tolkien',
+    pages: 667,
+    read: false,
+    id: 2
   }
 ];
+
+const container = document.querySelector('.container');
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -22,18 +31,14 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-function addBook() {
-  const title = prompt("Enter book title: ");
-  const author = prompt("Enter book author: ");
-  const pages = prompt("Enter number of pages: ");
-  const read = prompt("Have you read (y/n)? ");
-
+function addBook(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
+  console.log(newBook);
+  
   books.push(newBook);
 }
 
 function displayBook(book) {
-  const container = document.querySelector('.container');
   const card = document.createElement('div');
   card.classList.add('card');
 
@@ -49,16 +54,43 @@ function displayBook(book) {
   const cardRead = document.createElement('button');
   cardRead.textContent = book.read ? "Read" : "Not Read";
 
+  const cardDelete = document.createElement('button');
+  cardDelete.textContent = "Delete";
+  cardDelete.classList.add('btn-delete');
+
   card.appendChild(cardTitle);
   card.appendChild(cardAuthor);
   card.appendChild(cardPages);
   card.appendChild(cardRead);
+  card.appendChild(cardDelete);
 
   container.appendChild(card);
 }
 
 function displayLibrary() {
-  books.map(book => displayBook(book));
+  container.innerHTML = '';
+  books.forEach(book => displayBook(book));
 }
 
 displayLibrary();
+
+const dialog = document.querySelector('dialog');
+const dialogOpen = document.querySelector('.dialog-open');
+const form = document.querySelector('form');
+
+dialogOpen.addEventListener('click', () => {
+  dialog.showModal();
+})
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const title = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  const pages = document.querySelector('#pages').value;
+  const read = document.querySelector('#read').value;
+
+  addBook(title, author, pages, read);
+  displayLibrary();
+  dialog.close();
+})
+
