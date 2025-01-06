@@ -1,24 +1,21 @@
-const books = [
+let books = [
   {
     title: 'Hobbit',
     author: 'Tolkien',
     pages: 256,
-    read: true,
-    id: 0
+    read: true
   },
   {
     title: 'Lord of The Rings',
     author: 'Tolkien',
     pages: 949,
-    read: false,
-    id: 1
+    read: false
   },
   {
     title: 'Silmarillion',
     author: 'Tolkien',
     pages: 667,
-    read: false,
-    id: 2
+    read: false
   }
 ];
 
@@ -38,6 +35,10 @@ function addBook(title, author, pages, read) {
   books.push(newBook);
 }
 
+function removeBook() {
+
+}
+
 function displayBook(book) {
   const card = document.createElement('div');
   card.classList.add('card');
@@ -49,10 +50,11 @@ function displayBook(book) {
   cardAuthor.textContent = book.author;
 
   const cardPages = document.createElement('p');
-  cardPages.textContent = book.pages;
+  cardPages.textContent = `Pages: ${book.pages}`;
 
   const cardRead = document.createElement('button');
-  cardRead.textContent = book.read ? "Read" : "Not Read";
+  cardRead.textContent = book.read ? "Read" : "Todo";
+  cardRead.classList.add('btn-read');
 
   const cardDelete = document.createElement('button');
   cardDelete.textContent = "Delete";
@@ -65,14 +67,29 @@ function displayBook(book) {
   card.appendChild(cardDelete);
 
   container.appendChild(card);
+
+  cardRead.addEventListener('click', (e) => {
+    const parentCard = e.target.parentNode;
+    const bookIndex = books.findIndex(book => book.title === parentCard.firstChild.textContent );
+    books[bookIndex].read = !books[bookIndex].read;
+    console.log(books);
+    
+    
+    
+    displayLibrary();
+  })
+
+  cardDelete.addEventListener('click', (e) => {
+    const parentCard = e.target.parentNode;
+    books = books.filter(book => book.title === parentCard.firstChild.textContent ? null : book);
+    displayLibrary();
+  })
 }
 
 function displayLibrary() {
   container.innerHTML = '';
   books.forEach(book => displayBook(book));
 }
-
-displayLibrary();
 
 const dialog = document.querySelector('dialog');
 const dialogOpen = document.querySelector('.dialog-open');
@@ -93,4 +110,6 @@ form.addEventListener('submit', (e) => {
   displayLibrary();
   dialog.close();
 })
+
+displayLibrary();
 

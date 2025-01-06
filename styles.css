@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -8,22 +10,29 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 3rem;
-  gap: 3rem;
+  gap: 1.5rem;
   height: 100vh;
   background-color: lightblue;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Poppins", serif;
+  background-color: #f0fdfa;
+  color: #042f2e;
 }
 
 .container {
-  display: grid;
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 3rem;
   padding: 1.5rem;
   width: 80%;
 }
 
+h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}
+
 .card {
-  border: 1px solid red;
   flex: 0 0 15rem;
   padding: 1rem;
   display: flex;
@@ -31,6 +40,10 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  border-radius: 1rem;
+  border-left: 1px solid #0d9488;
+  border-top: 1px solid #0d9488;
+  box-shadow: 1rem 1rem 0.5rem #0d9488;
 }
 
 button {
@@ -38,6 +51,15 @@ button {
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  background-color: #0d9488;
+  color: white;
+  font-family: inherit;
+}
+
+.btn-read {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  background-color: #042f2e;
 }
 
 .btn-delete {
