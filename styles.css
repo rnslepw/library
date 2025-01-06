@@ -11,7 +11,7 @@ body {
   align-items: center;
   padding: 3rem;
   gap: 1.5rem;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   background-color: lightblue;
   font-family: "Poppins", serif;
   background-color: #f0fdfa;
